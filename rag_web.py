@@ -1,14 +1,9 @@
-# rag_web.py — RAG con interfaz web, soporte PDF y TXT
-# Nombre: Carlos Emmanuel González Álvarez
-# S2-D3 — RAG con LangChain + ChromaDB + Flask
-
 import os
 import sys
 import uuid
 import warnings
 warnings.filterwarnings("ignore")
 
-# Fix encoding para consola Windows
 if sys.stdout.encoding != 'utf-8':
     sys.stdout.reconfigure(encoding='utf-8')
 
@@ -19,13 +14,11 @@ from langchain_core.documents import Document
 from chromadb.utils.embedding_functions import DefaultEmbeddingFunction
 import pypdf
 
-# ─── Adaptador de embeddings (ONNX, sin PyTorch) ─────────────────────────────
 class ChromaEmbeddingsAdapter(Embeddings):
     def __init__(self):
         self.ef = DefaultEmbeddingFunction()
 
     def _to_float(self, vec):
-        """Convierte numpy array a lista de float nativo de Python."""
         return [float(x) for x in vec]
 
     def embed_documents(self, texts):
@@ -34,7 +27,6 @@ class ChromaEmbeddingsAdapter(Embeddings):
     def embed_query(self, text):
         return self._to_float(self.ef([text])[0])
 
-# ─── Configuración Flask ──────────────────────────────────────────────────────
 app = Flask(__name__)
 app.secret_key = "rag_langchain_carlos_2024"
 
@@ -43,11 +35,8 @@ CHROMA_FOLDER = "./chroma_web"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 embeddings = ChromaEmbeddingsAdapter()
-
-# Almacén de sesiones: {session_id: Chroma}
 sesiones = {}
 
-# ─── Extracción de texto ──────────────────────────────────────────────────────
 def extraer_texto_pdf(ruta):
     reader = pypdf.PdfReader(ruta)
     paginas = []
@@ -68,7 +57,6 @@ def extraer_texto_txt(ruta):
         metadata={"source": os.path.basename(ruta)}
     )]
 
-# ─── Rutas Flask ──────────────────────────────────────────────────────────────
 @app.route("/")
 def index():
     if "sid" not in session:
@@ -81,13 +69,13 @@ def subir_documento():
     session["sid"] = sid
 
     if "archivo" not in request.files:
-        return jsonify({"error": "No se recibió ningún archivo"}), 400
+        return jsonify({"error": "No se recibio ningun archivo"}), 400
 
     archivo = request.files["archivo"]
     nombre = archivo.filename
 
     if not nombre:
-        return jsonify({"error": "Nombre de archivo vacío"}), 400
+        return jsonify({"error": "Nombre de archivo vacio"}), 400
 
     extension = nombre.rsplit(".", 1)[-1].lower()
     if extension not in ["pdf", "txt"]:
@@ -103,9 +91,8 @@ def subir_documento():
             docs = extraer_texto_txt(ruta)
 
         if not docs:
-            return jsonify({"error": "El documento está vacío o no se pudo leer"}), 400
+            return jsonify({"error": "El documento esta vacio o no se pudo leer"}), 400
 
-        # Agregar a la base vectorial de la sesión
         if sid in sesiones:
             sesiones[sid].add_documents(docs)
         else:
@@ -137,7 +124,7 @@ def preguntar():
     pregunta = data.get("pregunta", "").strip()
 
     if not pregunta:
-        return jsonify({"error": "La pregunta no puede estar vacía"}), 400
+        return jsonify({"error": "La pregunta no puede estar vacia"}), 400
 
     try:
         resultados = sesiones[sid].similarity_search(pregunta, k=3)
@@ -150,7 +137,7 @@ def preguntar():
                 "contenido": r.page_content.strip()
             })
 
-        respuesta_principal = respuestas[0]["contenido"] if respuestas else "No encontré información relacionada."
+        respuesta_principal = respuestas[0]["contenido"] if respuestas else "No encontre informacion relacionada."
 
         return jsonify({
             "ok": True,
@@ -171,11 +158,6 @@ def limpiar():
     return jsonify({"ok": True})
 
 if __name__ == "__main__":
-    print()
-    print("==========================================")
-    print("  RAG WEB - LangChain + ChromaDB + Flask  ")
-    print("  Abre en tu navegador:                   ")
     print("  http://localhost:5000                   ")
-    print("==========================================")
-    print()
+ 
     app.run(debug=True, port=5000)
