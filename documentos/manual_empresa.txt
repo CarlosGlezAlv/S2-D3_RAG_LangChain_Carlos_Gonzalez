@@ -1,0 +1,15 @@
+Manual básico de la empresa
+
+El horario de atención es de lunes a viernes de 9:00 de la mañana a 6:00 de la tarde.
+
+Para recuperar una contraseña, el usuario debe entrar a la opción "Olvidé mi contraseña", escribir su correo registrado y seguir las instrucciones que llegan por correo electrónico.
+
+El área de ventas ayuda con cotizaciones, precios, promociones, planes de servicio y seguimiento a clientes interesados.
+
+Recursos Humanos se encarga de vacaciones, permisos, contrataciones, documentos del personal e inducción de nuevos empleados.
+
+El soporte técnico atiende problemas de acceso, errores del sistema, fallas en la plataforma y problemas relacionados con cuentas de usuario.
+
+Para solicitar una factura, el cliente debe enviar sus datos fiscales al área administrativa.
+
+Los nuevos empleados reciben una inducción durante su primera semana de trabajo. En esa inducción se explican herramientas internas, políticas de la empresa y canales de comunicación.

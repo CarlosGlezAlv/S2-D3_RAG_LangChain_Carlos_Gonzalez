@@ -1,0 +1,11 @@
+VENTAS Y FACTURACIÓN
+
+El área de ventas ayuda con cotizaciones, precios, promociones, planes de servicio y seguimiento a clientes interesados.
+
+Para solicitar una cotización, el cliente puede escribir directamente al correo del área de ventas o llamar al número de atención comercial.
+
+Para solicitar una factura, el cliente debe enviar sus datos fiscales al área administrativa: nombre o razón social, RFC, régimen fiscal, correo y uso del CFDI.
+
+Las facturas se emiten dentro de las 24 horas hábiles siguientes a la recepción de los datos fiscales completos.
+
+Las promociones vigentes se publican mensualmente en el portal interno y en el correo oficial de la empresa.

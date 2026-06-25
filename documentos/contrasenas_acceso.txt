@@ -1,0 +1,11 @@
+RECUPERACIÓN DE CONTRASEÑAS Y ACCESOS
+
+Para recuperar una contraseña, el usuario debe entrar a la opción "Olvidé mi contraseña", escribir su correo registrado y seguir las instrucciones que llegan por correo electrónico.
+
+El enlace de recuperación tiene una vigencia de 30 minutos. Si el enlace expira, el usuario debe solicitar uno nuevo.
+
+Si el correo registrado ya no está disponible, el usuario debe contactar directamente al área de soporte técnico para restablecer el acceso de forma manual.
+
+Las contraseñas deben tener mínimo 8 caracteres, incluir una letra mayúscula, un número y un carácter especial.
+
+Por seguridad, el sistema bloqueará la cuenta después de 5 intentos fallidos de inicio de sesión.
