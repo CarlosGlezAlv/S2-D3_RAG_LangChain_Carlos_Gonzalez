@@ -158,6 +158,5 @@ def limpiar():
     return jsonify({"ok": True})
 
 if __name__ == "__main__":
-    print("  http://localhost:5000                   ")
- 
+    print("http://localhost:5000")
     app.run(debug=True, port=5000)
