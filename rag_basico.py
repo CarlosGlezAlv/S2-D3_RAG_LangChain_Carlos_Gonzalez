@@ -25,7 +25,8 @@ archivos = [
     "horarios_empresa.txt",
     "contrasenas_acceso.txt",
     "ventas_facturacion.txt",
-    "recursos_humanos.txt"
+    "recursos_humanos.txt",
+    "manual_empresa.txt"
 ]
 
 todos_los_documentos = []
@@ -52,10 +53,10 @@ while True:
     resultados = base_vectorial.similarity_search(pregunta, k=1)
 
     if resultados:
-        print()
+   
         print("Respuesta:", resultados[0].page_content.strip())
-        print()
+ 
     else:
-        print()
+       
         print("No encontre informacion relacionada.")
-        print()
+    
